@@ -56,9 +56,6 @@ Fechar navegador
     Close Browser
 
 
-Fechar navegador
-    Close Browser
-
 ### Passo-a-Passo
 Acessar pagina home do site
     Title Should Be                     ${TITULO_HOME}
