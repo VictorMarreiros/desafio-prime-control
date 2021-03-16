@@ -5,14 +5,16 @@ Library             FakerLibrary
 *** Variables ***
 ${URL}                      http://automationpractice.com
 ${BROWSER}                  chrome
-
 ${TITULO_HOME}              My Store
 ${TITULO_LOGINPAGE}         Login - My Store
 ${BTN_LOGIN}                css=a[class="login"]
 ${CMP_EMAIL}                css=#email_create
 ${BTN_SUBMITCREATE}         xpath=//*[@id="SubmitCreate"]
-
-#${NEW_ACCOUNT_PAGE}         xpath=//*[@class="page-heading"][contains(text(), "Create an account")]   
+${TITULO_HOME}              My Store
+${TITULO_LOGINPAGE}         Login - My Store
+${BTN_SIGNIN}               css=a[class="login"]
+${CMP_EMAIL}                css=#email_create
+${BTN_SUBMITCREATE}         xpath=//*[@id="SubmitCreate"]
 ${FORM_PERSONAL_INFO}       xpath=//*[@id="account-creation_form"]//*[@class="page-subheading"][contains(text(), "Your personal information")]
 ${CMP_CLIENTE_NOME}         xpath=//*[@id="customer_firstname"]
 ${CMP_CLIENTE_SOBRENOME}    xpath=//*[@id="customer_lastname"]
@@ -31,11 +33,17 @@ ${CMP_NCELULAR}             css=#phone_mobile
 ${NUMERO_CEL}               +55 11 99999-1111
 ${CMP_ALIAS}                css=#alias
 ${BTN_REGISTER}             css=#submitAccount
+${CMP_COD_POSTAL}           xpath=//*[@id="postcode"]
+${CMP_NCELULAR}             xpath=//*[@id="phone_mobile"]
+${NUMERO_CEL}               +55 11 99999-1111
+${CMP_ALIAS}                xpath=//*[@id="alias"]
+${BTN_REGISTER}             xpath=//*[@id="submitAccount"]
 ${MY_ACCOUNT}               xpath=//*[@id="my-account"]        
 ${TITULO_MYACCOUNT}         My account - My Store
 ${MENSAGEM_WELCOME}         xpath=//*[@id="center_column"]/*[contains(text(), "Welcome to your account. Here you can manage all of your personal information and orders.")]
 ${BTN_HISTORICO}            xpath=//*[@id="center_column"]//*[contains(text(), "Order history and details")]
 ${BTN_INFO_PESSOAL}         xpath=//*[@id="center_column"]//*[contains(text(), "My personal information")]
+${MENSAGEM_WELCOME2}        xpath=//*[@id="center_column"]/*[contains(text(), "Welcome to your account. Here you can manage your personal information and orders.")]
 
 
 *** Keywords ***
@@ -43,9 +51,13 @@ ${BTN_INFO_PESSOAL}         xpath=//*[@id="center_column"]//*[contains(text(), "
 Abrir navegador
     Open Browser        ${URL}          ${BROWSER}    
 
+
 Fechar navegador
     Close Browser
 
+
+Fechar navegador
+    Close Browser
 
 ### Passo-a-Passo
 Acessar pagina home do site
@@ -54,6 +66,7 @@ Acessar pagina home do site
 
 Clicar no botão superior direito "Sign in"
     Click Link                          ${BTN_LOGIN}
+    Click Link                          ${BTN_SIGNIN}
     
 
 Inserir um e-mail válido
@@ -92,8 +105,14 @@ Preencher os campos obrigatórios
     Input Text                          ${CMP_NCELULAR}             ${NUMERO_CEL}
     Input Text                          ${CMP_ALIAS}                ${ENDERECO}
 
+
 Clicar em "Register" para finalizar o cadastro
     Click Button                        ${BTN_REGISTER}
+
+
+Clicar em "Register" para finalizar o cadastro
+    Click Button                        ${BTN_REGISTER}
+
 
 Conferir mensagem "Welcome to your account. Here you can manage all of your personal information and orders."
     Wait Until Element Is Visible       ${MY_ACCOUNT}
@@ -101,3 +120,11 @@ Conferir mensagem "Welcome to your account. Here you can manage all of your pers
     Page Should Contain Element         ${MENSAGEM_WELCOME}
     Page Should Contain Element         ${BTN_HISTORICO}
     Page Should Contain Element         ${BTN_INFO_PESSOAL}
+    Page Should Contain Element         ${BTN_INFO_PESSOAL}
+    Sleep                               2
+
+# foi retirado o trecho 'all of' da mensagem de boas vindas
+Conferir mensagem "Welcome to your account. Here you can manage your personal information and orders."
+    Wait Until Element Is Visible       ${MY_ACCOUNT}
+    Title Should Be                     ${TITULO_MYACCOUNT}
+    Page Should Contain Element         ${MENSAGEM_WELCOME2}
