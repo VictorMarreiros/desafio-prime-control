@@ -107,10 +107,6 @@ Clicar em "Register" para finalizar o cadastro
     Click Button                        ${BTN_REGISTER}
 
 
-Clicar em "Register" para finalizar o cadastro
-    Click Button                        ${BTN_REGISTER}
-
-
 Conferir mensagem "Welcome to your account. Here you can manage all of your personal information and orders."
     Wait Until Element Is Visible       ${MY_ACCOUNT}
     Title Should Be                     ${TITULO_MYACCOUNT}
