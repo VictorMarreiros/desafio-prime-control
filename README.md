@@ -47,7 +47,7 @@
 - **Então** devo ver a mensagem "Welcome to your account. Here you can manage your personal information and orders."
 
 ---
-**Caso fosse necessário reportar uma falha para o Caso de teste 2**
+#### Caso fosse necessário reportar uma falha para o Caso de teste 2
 
 **Report - 01**
 **Titulo**: Falha detectada na mensagem de boas vindas na tela "MyAccount"
