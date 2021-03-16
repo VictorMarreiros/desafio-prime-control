@@ -8,3 +8,4 @@ __pycache__/
 *.xml
 *.png
 ./results
+./tests/TestAutomationPracticeBDD.Robot
