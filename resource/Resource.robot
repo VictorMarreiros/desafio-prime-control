@@ -5,7 +5,6 @@ Library             FakerLibrary
 *** Variables ***
 ${URL}                      http://automationpractice.com
 ${BROWSER}                  chrome
-
 ${TITULO_HOME}              My Store
 ${TITULO_LOGINPAGE}         Login - My Store
 ${BTN_SIGNIN}               css=a[class="login"]
@@ -36,14 +35,15 @@ ${BTN_HISTORICO}            xpath=//*[@id="center_column"]//*[contains(text(), "
 ${BTN_INFO_PESSOAL}         xpath=//*[@id="center_column"]//*[contains(text(), "My personal information")]
 ${MENSAGEM_WELCOME2}        xpath=//*[@id="center_column"]/*[contains(text(), "Welcome to your account. Here you can manage your personal information and orders.")]
 
+
 *** Keywords ***
 ### Setup and Teardown
 Abrir navegador
     Open Browser        ${URL}          ${BROWSER}    
 
+
 Fechar navegador
     Close Browser
-
 
 ### Passo-a-Passo
 Acessar pagina home do site
