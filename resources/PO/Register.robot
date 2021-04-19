@@ -1,6 +1,6 @@
 *** Settings ***
-Library    SeleniumLibrary
-
+Library         SeleniumLibrary
+Library         FakerLibrary
 
 
 *** Variables ***
@@ -25,17 +25,21 @@ Preencher os dados obrigatórios
     Click Element                   ${REGISTER_OPT_GENDER}
     Input Text                      ${REGISTER_FIELD_FIRSTNAME}        Victor
     Input Text                      ${REGISTER_FIELD_LASTNAME}         Marreiros
-    Input Text                      ${REGISTER_FIELD_EMAIL}            ${EMAIL}@testerobot.com
-    Input Text                      ${REGISTER_FIELD_PASSWORD}         123456
-    Input Text                      ${REGISTER_FIELD_ADDRESS}          Rua Teste, Bairro 12Teste
-    Input Text                      ${REGISTER_FIELD_CITY}             Osasco
+    Input Text                      ${REGISTER_FIELD_EMAIL}            ${EMAIL}
+    ${PASSWORD}=                    FakerLibrary.Password
+    Input Text                      ${REGISTER_FIELD_PASSWORD}         ${PASSWORD}
+    ${ADDRESS}=                     FakerLibrary.Street Address    
+    Input Text                      ${REGISTER_FIELD_ADDRESS}          ${ADDRESS}
+    ${CITY}=                        FakerLibrary.City
+    Input Text                      ${REGISTER_FIELD_CITY}             ${CITY}
     Set Focus To Element            ${REGISTER_SELECT_ID_STATE}
     ### No firefox ocorreu problema ao achar o listbox State, então coloquei um if para esperar
     ### pelo elemento quando for firefox
     Run Keyword If    '${BROWSER}'=='firefox'  Wait Until Element Is Visible   ${REGISTER_SELECT_ID_STATE}
-    Select From List By Index       ${REGISTER_SELECT_ID_STATE}                 9 
-    Input Text                      ${REGISTER_FIELD_POSTCODE}              12345
-    Input Text                      ${REGISTER_FIELD_PHONE_MOB}          99988877
+    Select From List By Index       ${REGISTER_SELECT_ID_STATE}         9
+    ${POSTCODE}=                    FakerLibrary.Postcode    
+    Input Text                      ${REGISTER_FIELD_POSTCODE}          ${POSTCODE}
+    Input Text                      ${REGISTER_FIELD_PHONE_MOB}         99988877
 
 Submeter cadastro
     Click Button                    ${REGISTER_BTN_SUBMITACCOUNT}

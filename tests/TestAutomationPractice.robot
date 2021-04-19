@@ -26,7 +26,7 @@ Caso de teste 01: Cadastrar Cliente email válido
     Profile.Conferir se o cadastro foi efetuado com sucesso
     Profile.Conferir mensagem "Welcome to your account. Here you can manage all of your personal information and orders."
 
-Caso de teste 02: Cadastrar Cliente email inválido
+Caso de teste 02: Cadastrar Cliente mensagem de boas vindas inválida
     Home.Acessar a página home do site
     Home.Clicar em "Sign in"
     Login.Informar um e-mail válido
