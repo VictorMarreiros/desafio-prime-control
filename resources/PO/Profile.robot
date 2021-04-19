@@ -14,7 +14,7 @@ Conferir se o cadastro foi efetuado com sucesso
     Wait Until Element Is Visible       ${PROFILE_MSGS}
     Element Text Should Be              ${PROFILE_MSGS}
     ...    Welcome to your account. Here you can manage all of your personal information and orders.
-    Element Text Should Be              ${PROFILE_USERNAME}    May Fernandes
+    Element Text Should Be              ${PROFILE_USERNAME}    Victor Marreiros
 
 
 Conferir mensagem "Welcome to your account. Here you can manage all of your personal information and orders."
