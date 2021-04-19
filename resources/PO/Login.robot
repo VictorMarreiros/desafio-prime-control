@@ -18,4 +18,3 @@ Informar um e-mail válido
 
 Clicar em "Create an account"
     Click Button    ${LOGIN_BTN_SUBMITCREATE}
-

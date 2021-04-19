@@ -39,4 +39,3 @@ Preencher os dados obrigatórios
 
 Submeter cadastro
     Click Button    ${REGISTER_BTN_SUBMITACCOUNT}
-
